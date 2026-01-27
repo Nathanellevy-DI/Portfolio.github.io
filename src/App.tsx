@@ -13,7 +13,7 @@ import stackPadImg from './assets/projects/stackpad.jpg';
 
 // Components
 const Section = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
-  <section className={`min-h-screen relative flex items-center justify-center p-8 overflow-hidden ${className}`}>
+  <section className={`min-h-[80vh] relative flex items-center justify-center p-4 md:p-8 overflow-hidden ${className}`}>
     {children}
   </section>
 );
@@ -24,7 +24,7 @@ const GitHubStats = ({ username }: { username: string }) => {
   if (loading) return <div className="animate-pulse h-8 w-48 bg-white/5 rounded mx-auto mt-8"></div>;
 
   return (
-    <div className="flex justify-center gap-8 mt-8 flex-wrap">
+    <div className="flex justify-start gap-8 mt-8 flex-wrap">
       <div className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
         <Users size={16} className="text-purple-400" />
         <span className="font-bold">{followers}</span> followers
@@ -66,44 +66,48 @@ const App = () => {
       </motion.div>
 
       <main className="relative z-10">
-        <Section>
-          <div className="max-w-4xl mx-auto text-center space-y-8">
+        <Section className="py-20"> {/* Reduced padding/min-height constraint if needed, kept min-h-screen in Section definition but can override */}
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 text-left">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="w-48 h-48 mx-auto rounded-full p-1 bg-gradient-to-r from-purple-500 to-pink-500 shadow-2xl overflow-hidden"
+              className="w-64 h-64 md:w-80 md:h-80 flex-shrink-0 rounded-full p-1 bg-gradient-to-r from-purple-500 to-pink-500 shadow-2xl overflow-hidden"
             >
               <img src="/src/assets/profile.jpg" alt="Nathanel Levy" className="w-full h-full object-cover rounded-full" />
             </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
-            >
-              Nathanel Levy
-            </motion.h1>
+            <div className="space-y-6">
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
+              >
+                Nathanel Levy
+              </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-              className="text-2xl text-gray-300"
-            >
-              Full Stack Developer & UI/UX Specialist
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="text-2xl text-gray-300"
+              >
+                Full Stack Developer & UI/UX Specialist
+              </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="flex justify-center gap-4 text-sm text-gray-400"
-            >
-              <span>E-commerce</span> • <span>Operational Management</span> • <span>React Specialist</span>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+                className="flex flex-wrap gap-4 text-sm text-gray-400"
+              >
+                <span>E-commerce</span> • <span>Operational Management</span> • <span>React Specialist</span>
+              </motion.div>
 
-            <GitHubStats username="Nathanellevy-DI" />
+              <div className="pt-4">
+                <GitHubStats username="Nathanellevy-DI" />
+              </div>
+            </div>
           </div>
         </Section>
 
