@@ -20,9 +20,10 @@ const Section = ({ children, className = "" }: { children: ReactNode; className?
 );
 
 const GitHubStats = ({ username }: { username: string }) => {
-  const { followers, publicRepos, totalStars, loading } = useGitHubStats(username);
+  const { followers, publicRepos, totalStars, loading, error } = useGitHubStats(username);
 
   if (loading) return <div className="animate-pulse h-8 w-48 bg-white/5 rounded mx-auto mt-8"></div>;
+  if (error) return <div className="text-gray-500 text-xs mt-8">Stats temporarily unavailable (API Limit)</div>;
 
   return (
     <div className="flex justify-start gap-8 mt-8 flex-wrap">
