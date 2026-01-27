@@ -66,28 +66,31 @@ const App = () => {
       </motion.div>
 
       <main className="relative z-10">
-        <Section className="py-20"> {/* Reduced padding/min-height constraint if needed, kept min-h-screen in Section definition but can override */}
-          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 text-left">
+        <Section className="py-12 md:py-20"> {/* Adjusted padding for mobile */}
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 text-center md:text-left"> {/* Centered text on mobile, left on desktop */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="relative w-72 h-72 md:w-96 md:h-96 flex-shrink-0 rounded-full p-[6px] bg-gradient-to-r from-purple-500 to-pink-500 shadow-2xl overflow-hidden"
+              className="relative w-64 h-64 md:w-96 md:h-96 flex-shrink-0 rounded-full p-[6px] bg-gradient-to-r from-purple-500 to-pink-500 shadow-2xl overflow-hidden mx-auto md:mx-0" /* Auto margins for centering on mobile */
             >
-              <div className="w-full h-full rounded-full overflow-hidden bg-[#1a1a1a] flex items-center justify-center">
+              <div className="w-full h-full rounded-full overflow-hidden bg-[#1a1a1a] flex items-center justify-center relative">
+                {/* Using background image approach for bulletproof centering if needed, but object-cover is usually fine. 
+                     Let's verify aspect ratio issues. If source image is rectangular, object-cover centers it. 
+                     Adding explicit centering styles to img tag just in case. */}
                 <img
                   src="/src/assets/profile.jpg"
                   alt="Nathanel Levy"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover object-center absolute inset-0"
                 />
               </div>
             </motion.div>
 
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6 max-w-lg">
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
+                className="text-4xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 leading-tight"
               >
                 Nathanel Levy
               </motion.h1>
@@ -96,7 +99,7 @@ const App = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="text-2xl text-gray-300"
+                className="text-xl md:text-2xl text-gray-300"
               >
                 Full Stack Developer & UI/UX Specialist
               </motion.p>
@@ -105,12 +108,14 @@ const App = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="flex flex-wrap gap-4 text-sm text-gray-400"
+                className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-4 text-sm text-gray-400"
               >
-                <span>E-commerce</span> • <span>Operational Management</span> • <span>React Specialist</span>
+                <span className="bg-white/5 px-3 py-1 rounded-full">E-commerce</span>
+                <span className="bg-white/5 px-3 py-1 rounded-full">Operational Management</span>
+                <span className="bg-white/5 px-3 py-1 rounded-full">React Specialist</span>
               </motion.div>
 
-              <div className="pt-4">
+              <div className="pt-4 flex justify-center md:justify-start">
                 <GitHubStats username="Nathanellevy-DI" />
               </div>
             </div>
