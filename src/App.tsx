@@ -10,6 +10,7 @@ import fitTrackImg from './assets/projects/fittrack.png';
 import airWatchImg from './assets/projects/airwatch.jpg';
 import newsHubImg from './assets/projects/newshub.jpg';
 import stackPadImg from './assets/projects/stackpad.jpg';
+import profileImg from './assets/profile.jpg';
 
 // Components
 const Section = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
@@ -79,7 +80,7 @@ const App = () => {
                      Let's verify aspect ratio issues. If source image is rectangular, object-cover centers it. 
                      Adding explicit centering styles to img tag just in case. */}
                 <img
-                  src="/src/assets/profile.jpg"
+                  src={profileImg}
                   alt="Nathanel Levy"
                   className="w-full h-full object-cover object-center absolute inset-0"
                 />
