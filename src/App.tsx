@@ -72,13 +72,15 @@ const App = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="w-72 h-72 md:w-96 md:h-96 flex-shrink-0 rounded-full p-[6px] bg-gradient-to-r from-purple-500 to-pink-500 shadow-2xl flex items-center justify-center"
+              className="relative w-72 h-72 md:w-96 md:h-96 flex-shrink-0 rounded-full p-[6px] bg-gradient-to-r from-purple-500 to-pink-500 shadow-2xl overflow-hidden"
             >
-              <img
-                src="/src/assets/profile.jpg"
-                alt="Nathanel Levy"
-                className="w-full h-full object-cover object-center rounded-full bg-[#1a1a1a]"
-              />
+              <div className="w-full h-full rounded-full overflow-hidden bg-[#1a1a1a] flex items-center justify-center">
+                <img
+                  src="/src/assets/profile.jpg"
+                  alt="Nathanel Levy"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
             </motion.div>
 
             <div className="space-y-6">
